@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class ChatBar extends Component {
   render() {
-    console.log(this.props.name);
     return (
       <footer className="chatbar">
         <input
