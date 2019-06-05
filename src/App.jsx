@@ -38,20 +38,37 @@ class App extends Component {
         }
       ]
     };
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
-    console.log("componentDidMount <App />");
-    setTimeout(() => {
-      console.log("Simulating incoming message");
-      const newMessage = {
-        id: 3,
-        username: "Michelle",
-        content: "Hello there!"
+    const webSocket = new WebSocket("ws://localhost:3001/");
+    webSocket.onopen = () => {
+      console.log("Connected to server");
+    };
+    // setTimeout(() => {
+    //   console.log("Simulating incoming message");
+    //   const newMessage = {
+    //     id: 3,
+    //     username: "Michelle",
+    //     content: "Hello there!"
+    //   };
+    //   const messages = this.state.messages.concat(newMessage);
+    //   this.setState({ messages: messages });
+    // }, 3000);
+  }
+
+  handleKeyPress(event) {
+    if (event.key == "Enter") {
+      let newObj = {
+        id: 1,
+        username: this.state.currentUser.name,
+        content: event.target.value
       };
-      const messages = this.state.messages.concat(newMessage);
-      this.setState({ messages: messages });
-    }, 3000);
+      const oldMessages = this.state.messages;
+      const newMessages = [...oldMessages, newObj];
+      this.setState({ messages: newMessages });
+    }
   }
 
   render() {
@@ -63,7 +80,11 @@ class App extends Component {
           </a>
         </nav>
         <MessageList messages={this.state.messages} />
-        <ChatBar currentUser={this.state.currentUser.name} />
+        <ChatBar
+          type="text"
+          currentUser={this.state.currentUser.name}
+          onKeyPress={this.handleKeyPress}
+        />
       </div>
     );
   }
