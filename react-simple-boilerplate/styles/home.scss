@@ -1,13 +1,13 @@
 body {
-    background: #7D84B2;
-    color: black;
+    background: #AD9BAA;
+    color: white;
     font-family: 'Comic Sans', sans-serif;
     font-size: 14px;
     margin: 70px 0;
 }
 
 .chatbar {
-    background: #DBF4A7;
+    background: #B5DFCA;
     bottom: 0;
     display: flex;
     left: 0;
@@ -19,7 +19,7 @@ body {
 .chatbar-message,
 .chatbar-username {
     display: block;
-    background-color: #7D84B2;
+    background-color: #AD9BAA;
     color: white;
     height: 40px;
     line-height: 40px;
@@ -63,7 +63,7 @@ body {
 }
 
 .navbar {
-    background: #DBF4A7;
+    background: #B5DFCA;
     color: #7D84B2;
     height: 60px;
     left: 0;
