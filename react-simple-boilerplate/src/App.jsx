@@ -41,17 +41,18 @@ class App extends Component {
       const text = JSON.parse(msg.data);
       const oldMessage = this.state.messages;
       const newMessage = [...oldMessage, text];
-      console.log("parsed msg data", newMessage);
+      console.log("texxt object", text.count);
       this.setState({
         messages: newMessage,
-        username: newMessage.username
+        username: newMessage.username,
+        numOfUsers: text.count
       });
-      switch (text.type) {
-        case "incomingMessage":
-          break;
-        case "incomingNotification":
-          break;
-      }
+      // switch (text.type) {
+      //   case "incomingMessage":
+      //     break;
+      //   case "incomingNotification":
+      //     break;
+      // }
     };
     // setTimeout(() => {
     //   console.log("Simulating incoming message");
@@ -126,6 +127,9 @@ class App extends Component {
           <a href="/" className="navbar-brand">
             Chatty
           </a>
+          <span className="user-count">
+            Users online: {this.state.numOfUsers}
+          </span>
         </nav>
         <MessageList
           messages={this.state.messages}
