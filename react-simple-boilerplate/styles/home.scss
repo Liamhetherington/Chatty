@@ -1,18 +1,13 @@
-h1 {
-    color: tomato;
-}
-
 body {
-    background: white;
+    background: #7D84B2;
     color: black;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Comic Sans', sans-serif;
     font-size: 14px;
     margin: 70px 0;
 }
 
 .chatbar {
-    background: tomato;
-    border-top: 1px solid black;
+    background: #DBF4A7;
     bottom: 0;
     display: flex;
     left: 0;
@@ -23,8 +18,9 @@ body {
 
 .chatbar-message,
 .chatbar-username {
-    border: 1px solid black;
     display: block;
+    background-color: #7D84B2;
+    color: white;
     height: 40px;
     line-height: 40px;
     margin: 5px;
@@ -67,8 +63,8 @@ body {
 }
 
 .navbar {
-    background: tomato;
-    border-bottom: 1px solid black;
+    background: #DBF4A7;
+    color: #7D84B2;
     height: 60px;
     left: 0;
     padding: 0 10px;
@@ -87,4 +83,9 @@ body {
     line-height: 60px;
     padding: 0 10px;
     text-decoration: none;
+}
+
+.user-count {
+    float: right;
+    margin: 20px 10px 0 0;
 }

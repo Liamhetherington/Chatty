@@ -42,11 +42,21 @@ class App extends Component {
       const oldMessage = this.state.messages;
       const newMessage = [...oldMessage, text];
       console.log("texxt object", msg);
-      this.setState({
-        messages: newMessage,
-        username: newMessage.username,
-        numOfUsers: text.count
-      });
+      // this.setState({
+      //   messages: newMessage,
+      //   username: newMessage.username,
+      //   numOfUsers: text.count
+      // });
+      if (text.type === "incomingCountUsers") {
+        this.setState({
+          numOfUsers: text.count
+        });
+      } else {
+        this.setState({
+          messages: newMessage,
+          username: newMessage.username
+        });
+      }
       // switch (text.type) {
       //   case "incomingMessage":
       //     break;

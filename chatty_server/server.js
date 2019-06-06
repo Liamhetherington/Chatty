@@ -25,6 +25,7 @@ wss.on('connection', (ws) => {
         type: "incomingCountUsers",
         count: wss.clients.size
     }
+
     console.log(numOfUsers.count)
 
     wss.broadcast = function broadcast(incomingPost) {
@@ -50,9 +51,6 @@ wss.on('connection', (ws) => {
         wss.broadcast(incomingPost)
 
     })
-
-
-
 
     // Set up a callback for when a client closes the socket. This usually means they closed their browser.
     ws.on('close', () => {
