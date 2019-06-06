@@ -65,8 +65,8 @@ class App extends Component {
   }
 
   handleChange(event) {
-    let userName = this.state.currentUser;
-    console.log("User name:", userName);
+    // let userName = this.state.currentUser;
+    // console.log("User name:", userName);
     this.setState({
       currentUser: {
         name: event.target.value

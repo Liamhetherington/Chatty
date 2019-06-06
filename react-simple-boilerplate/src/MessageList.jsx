@@ -5,7 +5,7 @@ class MessageList extends Component {
   render() {
     const eachMessage = this.props.messages.map((messages, username, index) => (
       <Message
-        key={index}
+        key={messages.id}
         username={messages.username}
         content={messages.content}
       />
