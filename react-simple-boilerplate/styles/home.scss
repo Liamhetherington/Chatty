@@ -18,6 +18,7 @@ body {
 
 .chatbar-message,
 .chatbar-username {
+    border-radius: 10px;
     display: block;
     background-color: #AD9BAA;
     color: white;
@@ -47,24 +48,34 @@ body {
 
 .message-content,
 .message-username {
+    border-radius: 10px;
+    box-shadow: 13px 13px 19px 11px rgba(128, 112, 128, 0.75);
+    padding: 40px 10px;
+    background: purple;
     overflow: hidden;
     margin: 5px;
-    padding: 0 10px;
 }
 
 .message-content {
+    border-radius: 10px;
+    box-shadow: 13px 13px 19px 11px rgba(128, 112, 128, 0.75);
+    ;
+    padding-top: 40px;
+    background: purple;
     flex: 8;
 }
 
 .message-username {
+    height: 10px;
     flex: 2;
     font-weight: 700;
     font-size: 20px;
+    text-align: center;
 }
 
 .navbar {
     background: #B5DFCA;
-    color: #7D84B2;
+    color: purple;
     height: 60px;
     left: 0;
     padding: 0 10px;
