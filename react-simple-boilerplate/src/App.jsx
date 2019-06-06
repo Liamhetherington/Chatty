@@ -29,6 +29,7 @@ class App extends Component {
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    console.log(this.state.notification);
   }
 
   componentDidMount() {
@@ -65,6 +66,13 @@ class App extends Component {
   }
 
   handleChange(event) {
+    if (event.target.value !== this.state.currentUser.name) {
+      const incomingNotification = this.buildNotification(
+        event.target.value,
+        this.state.currentUser.name
+      );
+      this.socket.send(JSON.stringify(incomingNotification));
+    }
     // let userName = this.state.currentUser;
     // console.log("User name:", userName);
     this.setState({
@@ -72,8 +80,16 @@ class App extends Component {
         name: event.target.value
       }
     });
+  }
+
+  buildNotification(username, oldUsername) {
+    let newNotification = {
+      username: username,
+      content: `${oldUsername} changed their name to ${username}.`
+    };
     return {
-      type: "postNotification"
+      type: "postNotification",
+      data: newNotification
     };
   }
 

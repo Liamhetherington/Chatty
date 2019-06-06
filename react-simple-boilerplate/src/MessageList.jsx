@@ -10,13 +10,9 @@ class MessageList extends Component {
         content={messages.content}
       />
     ));
-    return (
-      <main className="messages">
-        {eachMessage}
-        <div className="message system" />
-      </main>
-    );
+    return <main className="messages">{eachMessage}</main>;
   }
 }
 
 export default MessageList;
+``;

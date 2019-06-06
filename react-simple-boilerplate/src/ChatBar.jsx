@@ -23,7 +23,7 @@ class ChatBar extends Component {
           className="chatbar-username"
           defaultValue={this.props.currentUser}
           value={this.props.value}
-          onChange={this.props.onChange}
+          onBlur={this.props.onChange}
         />
         <input
           className="chatbar-message"

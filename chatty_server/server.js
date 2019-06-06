@@ -27,7 +27,15 @@ wss.on('connection', (ws) => {
         const post = JSON.parse(message).data;
         post.id = uuidv4();
         post.type = "incomingMessage";
-        console.log(post);
+        console.log(message);
+
+        if (post.type === "postMessage") {
+            post.type = "incomingMessage"
+        }
+
+        if (post.type === "postNotification") {
+            post.type = "incomingNotification"
+        }
 
         const incomingPost = JSON.stringify(post);
 
