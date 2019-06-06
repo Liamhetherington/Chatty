@@ -41,7 +41,7 @@ class App extends Component {
       const text = JSON.parse(msg.data);
       const oldMessage = this.state.messages;
       const newMessage = [...oldMessage, text];
-      console.log("texxt object", text.count);
+      console.log("texxt object", msg);
       this.setState({
         messages: newMessage,
         username: newMessage.username,
