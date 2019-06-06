@@ -45,6 +45,12 @@ class App extends Component {
         messages: newMessage,
         username: newMessage.username
       });
+      switch (text.type) {
+        case "incomingMessage":
+          break;
+        case "incomingNotification":
+          break;
+      }
     };
     // setTimeout(() => {
     //   console.log("Simulating incoming message");
@@ -66,6 +72,9 @@ class App extends Component {
         name: event.target.value
       }
     });
+    return {
+      type: "postNotification"
+    };
   }
 
   handleKeyPress(event) {
@@ -85,7 +94,7 @@ class App extends Component {
     };
 
     return {
-      type: "post",
+      type: "postMessage",
       data: post
     };
   }
