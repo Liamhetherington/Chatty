@@ -36,6 +36,11 @@ body {
     flex: 2;
 }
 
+.message-container {
+    word-wrap: break-word;
+    margin-right: 300px;
+}
+
 .message {
     display: flex;
     padding: 5px;

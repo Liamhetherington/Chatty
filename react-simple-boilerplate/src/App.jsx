@@ -29,7 +29,6 @@ class App extends Component {
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    console.log(this.state.notification);
   }
 
   componentDidMount() {
@@ -39,15 +38,15 @@ class App extends Component {
     };
     this.socket.onmessage = msg => {
       const text = JSON.parse(msg.data);
+      // const usersOnline = text.
       const oldMessage = this.state.messages;
       const newMessage = [...oldMessage, text];
-      console.log("texxt object", msg);
       // this.setState({
       //   messages: newMessage,
       //   username: newMessage.username,
       //   numOfUsers: text.count
       // });
-      if (text.type === "incomingCountUsers") {
+      if (text.type == "connection" || text.type == "disconnection") {
         this.setState({
           numOfUsers: text.count
         });
@@ -57,12 +56,7 @@ class App extends Component {
           username: newMessage.username
         });
       }
-      // switch (text.type) {
-      //   case "incomingMessage":
-      //     break;
-      //   case "incomingNotification":
-      //     break;
-      // }
+      console.log("users: ", text.type);
     };
     // setTimeout(() => {
     //   console.log("Simulating incoming message");
@@ -127,10 +121,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(
-      "This is the username input value",
-      this.state.currentUser.name
-    );
+    console.log("number of users online: ", this.state.numOfUsers);
     return (
       <div>
         <nav className="navbar">
@@ -141,10 +132,12 @@ class App extends Component {
             Users online: {this.state.numOfUsers}
           </span>
         </nav>
-        <MessageList
-          messages={this.state.messages}
-          username={this.state.currentUser.name}
-        />
+        <div className="message-container">
+          <MessageList
+            messages={this.state.messages}
+            username={this.state.currentUser.name}
+          />
+        </div>
         <ChatBar
           type="text"
           currentUser={this.state.currentUser.name}

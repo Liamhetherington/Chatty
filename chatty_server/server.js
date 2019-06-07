@@ -17,22 +17,23 @@ const wss = new SocketServer({ server });
 // Set up a callback that will run when a client connects to the server
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
-
-
+// wss.broadcast = data => 
+wss.broadcast = function broadcast(incomingPost) {
+    wss.clients.forEach(function each(client) {
+        client.send(incomingPost);
+    });
+};
 
 wss.on('connection', (ws) => {
     const numOfUsers = {
-        type: "incomingCountUsers",
+        type: "connection",
         count: wss.clients.size
     }
 
-    console.log(numOfUsers.count)
+    wss.broadcast(JSON.stringify(numOfUsers));
 
-    wss.broadcast = function broadcast(incomingPost) {
-        wss.clients.forEach(function each(client) {
-            client.send(incomingPost);
-        });
-    };
+    console.log("connection", numOfUsers.count)
+
 
     ws.on('message', (message) => {
         const post = JSON.parse(message).data;
@@ -56,10 +57,10 @@ wss.on('connection', (ws) => {
     ws.on('close', () => {
         console.log('Client disconnected')
         const numOfUsers = {
-            type: "outgoingCountUsers",
-            count: wss.clients.size.toString()
+            type: "disconnection",
+            count: wss.clients.size
         }
-        console.log(numOfUsers.count);
+        wss.broadcast(JSON.stringify(numOfUsers));
+        console.log("disconnection", numOfUsers.count);
     });
-    wss.broadcast(JSON.stringify(numOfUsers));
 });
