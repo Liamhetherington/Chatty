@@ -8,6 +8,7 @@ class MessageList extends Component {
         key={messages.id}
         username={messages.username}
         content={messages.content}
+        color={this.props.color}
       />
     ));
     return <main className="messages">{eachMessage}</main>;

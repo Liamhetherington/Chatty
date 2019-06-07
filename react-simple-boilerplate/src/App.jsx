@@ -18,13 +18,17 @@ import ChatBar from "./ChatBar.jsx";
 //     }
 //   ]
 // };
+const colours = ["red", "green", "blue", "magenta", "orange"];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.socket = null;
     this.state = {
-      currentUser: { name: "Bob" },
+      currentUser: {
+        name: "Bob",
+        color: "#000"
+      },
       messages: []
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -71,6 +75,7 @@ class App extends Component {
   }
 
   handleChange(event) {
+    const colour = colours[Math.floor(Math.random() * 5)];
     if (event.target.value !== this.state.currentUser.name) {
       const incomingNotification = this.buildNotification(
         event.target.value,
@@ -82,15 +87,19 @@ class App extends Component {
     // console.log("User name:", userName);
     this.setState({
       currentUser: {
-        name: event.target.value
+        name: event.target.value,
+        color: !this.state.colour ? colour : this.state.colour
       }
     });
   }
 
   buildNotification(username, oldUsername) {
+    const colour = colours[Math.floor(Math.random() * 5)];
+    console.log("colour:", colour);
     let newNotification = {
       username: username,
-      content: `${oldUsername} changed their name to ${username}.`
+      content: `${oldUsername} changed their name to ${username}.`,
+      color: colour
     };
     return {
       type: "postNotification",
@@ -136,6 +145,7 @@ class App extends Component {
           <MessageList
             messages={this.state.messages}
             username={this.state.currentUser.name}
+            color={this.state.currentUser.color}
           />
         </div>
         <ChatBar
