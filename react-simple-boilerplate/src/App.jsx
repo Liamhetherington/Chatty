@@ -2,22 +2,6 @@ import React, { Component } from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 
-// const data = {
-//   currentUser: {
-//     name: "Bob"
-//   }, // optional. if currentUser is not defined, it means the user is Anonymous
-//   messages: [
-//     {
-//       username: "Bob",
-//       content: "Has anyone seen my marbles?"
-//     },
-//     {
-//       username: "Anonymous",
-//       content:
-//         "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-//     }
-//   ]
-// };
 const colours = ["red", "green", "blue", "magenta", "orange"];
 
 class App extends Component {
@@ -42,14 +26,8 @@ class App extends Component {
     };
     this.socket.onmessage = msg => {
       const text = JSON.parse(msg.data);
-      // const usersOnline = text.
       const oldMessage = this.state.messages;
       const newMessage = [...oldMessage, text];
-      // this.setState({
-      //   messages: newMessage,
-      //   username: newMessage.username,
-      //   numOfUsers: text.count
-      // });
       if (text.type == "connection" || text.type == "disconnection") {
         this.setState({
           numOfUsers: text.count
@@ -60,18 +38,7 @@ class App extends Component {
           username: newMessage.username
         });
       }
-      console.log("users: ", text.type);
     };
-    // setTimeout(() => {
-    //   console.log("Simulating incoming message");
-    //   const newMessage = {
-    //     id: 3,
-    //     username: "Michelle",
-    //     content: "Hello there!"
-    //   };
-    //   const messages = this.state.messages.concat(newMessage);
-    //   this.setState({ messages: messages });
-    // }, 3000);
   }
 
   handleChange(event) {
@@ -83,8 +50,6 @@ class App extends Component {
       );
       this.socket.send(JSON.stringify(incomingNotification));
     }
-    // let userName = this.state.currentUser;
-    // console.log("User name:", userName);
     this.setState({
       currentUser: {
         name: event.target.value,
@@ -98,8 +63,7 @@ class App extends Component {
     console.log("colour:", colour);
     let newNotification = {
       username: username,
-      content: `${oldUsername} changed their name to ${username}.`,
-      color: colour
+      content: `${oldUsername} changed their name to ${username}.`
     };
     return {
       type: "postNotification",
