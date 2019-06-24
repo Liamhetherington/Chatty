@@ -36,19 +36,19 @@ wss.on('connection', (ws) => {
 
 
     ws.on('message', (message) => {
-        const post = JSON.parse(message).data;
-        post.id = uuidv4();
-        post.type = "incomingMessage";
+        const post = JSON.parse(message);
+        post.data.id = uuidv4();
 
         if (post.type === "postMessage") {
-            post.type = "incomingMessage"
+            post.data.type = "incomingMessage"
         }
 
         if (post.type === "postNotification") {
-            post.type = "incomingNotification"
+            post.data.type = "incomingNotification"
         }
+        console.log(post);
 
-        const incomingPost = JSON.stringify(post);
+        const incomingPost = JSON.stringify(post.data);
         wss.broadcast(incomingPost)
 
     })
