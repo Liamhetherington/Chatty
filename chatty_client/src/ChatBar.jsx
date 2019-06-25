@@ -16,6 +16,16 @@ class ChatBar extends Component {
     });
   }
 
+  onKeyPress = event => {
+    console.log("fsafdsafdsafas");
+    this.props.onKeyPress(event);
+    if (event.key == "Enter") {
+      this.setState({
+        content: ""
+      });
+    }
+  };
+
   render() {
     return (
       <footer className="chatbar">
@@ -29,7 +39,7 @@ class ChatBar extends Component {
           className="chatbar-message"
           value={this.state.content}
           onChange={this.onContent}
-          onKeyPress={this.props.onKeyPress}
+          onKeyPress={this.onKeyPress}
         />
       </footer>
     );
