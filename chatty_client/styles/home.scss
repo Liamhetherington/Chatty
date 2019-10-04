@@ -7,7 +7,6 @@ body {
 }
 
 .chatbar {
-    // background: #B5DFCA;
     bottom: 0;
     display: flex;
     left: 0;
@@ -20,8 +19,7 @@ body {
 .chatbar-username {
     border-radius: 10px;
     display: block;
-    background-color: white;
-    color: rgb(185, 106, 185);;
+    color: black;
     height: 40px;
     line-height: 40px;
     margin: 5px;
@@ -80,7 +78,8 @@ body {
     font-weight: 700;
     font-size: 20px;
     padding-top: 25px;
-    padding-right: 25px;
+    padding-right: 60px;
+    opacity: 0.8;
 }
 
 .notification-content {

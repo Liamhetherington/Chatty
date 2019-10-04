@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./ChatBar.jsx";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComments } from '@fortawesome/free-solid-svg-icons'
+
 const colours = ["red", "green", "blue", "magenta", "orange"];
 
 class App extends Component {
@@ -10,7 +13,7 @@ class App extends Component {
     this.socket = null;
     this.state = {
       currentUser: {
-        name: "Bob",
+        name: "Liam",
         color: "#000"
       },
       messages: []
@@ -100,6 +103,7 @@ class App extends Component {
         <nav className="navbar">
           <a href="/" className="navbar-brand">
             Chatty
+            <FontAwesomeIcon icon={faComments}></FontAwesomeIcon>
           </a>
           <span className="user-count">
             Users online: {this.state.numOfUsers}
