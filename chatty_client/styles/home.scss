@@ -13,12 +13,16 @@ body {
     padding: 5px;
     position: fixed;
     right: 0;
+    margin-bottom: 30px;
 }
 
 .chatbar-message,
 .chatbar-username {
-    border-radius: 10px;
+    box-shadow: 13px 13px 19px 11px rgba(128, 112, 128, 0.75);
+    border-radius: 20px;
+    border: none;
     display: block;
+    background-color: white;
     color: black;
     height: 40px;
     line-height: 40px;
@@ -28,10 +32,6 @@ body {
 
 .chatbar-message {
     flex: 8;
-}
-
-.chatbar-username {
-    flex: 2;
 }
 
 .message-container {
@@ -51,25 +51,21 @@ body {
 }
 
 .message-content {
-    border-radius: 10px;
+    border-radius: 10px 10px 10px 0px;
     box-shadow: 13px 13px 19px 11px rgba(128, 112, 128, 0.75);
     opacity: 0.6;
+    height: 40px;
+    padding-top: 20px;
     padding-left: 15px;
     margin-left: 150px;
     vertical-align: middle;
     background: rgb(185, 106, 185);
     overflow: hidden;
     margin: 5px;
-}
-
-.message-content {
-    border-radius: 10px;
-    box-shadow: 13px 13px 19px 11px rgba(128, 112, 128, 0.75);
-    height: 40px;
-    padding-top: 20px;
-    background: rgb(185, 106, 185);
+    margin-left: 20px;
     flex: 8;
 }
+
 
 .message-username {
     color: rgb(185, 106, 185);
@@ -77,8 +73,7 @@ body {
     text-align: right;
     font-weight: 700;
     font-size: 20px;
-    padding-top: 25px;
-    padding-right: 60px;
+    padding: 40px 30px 0px 0px;
     opacity: 0.8;
 }
 
@@ -113,5 +108,6 @@ body {
 
 .user-count {
     float: right;
-    margin: 20px 10px 0 0;
+    margin: 20px 30px 0 0;
+    font-size: 1.5em;
 }
